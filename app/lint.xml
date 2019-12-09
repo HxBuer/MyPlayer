@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconDuplicatesConfig">
+        <ignore path="src/main/res/drawable-hdpi/search_press.png" />
+        <ignore path="src/main/res/drawable/search_press.png" />
+    </issue>
+</lint>
