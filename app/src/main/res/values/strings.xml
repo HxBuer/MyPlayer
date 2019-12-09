@@ -12,4 +12,5 @@
     <string name="audio">本地音乐</string>
     <string name="net_video">网络视频</string>
     <string name="person">个人信息</string>
+    <string name="search">网络搜索</string>
 </resources>
