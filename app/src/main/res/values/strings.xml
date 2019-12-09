@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyPlayer</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+
+    <string name="splash">正在启动中···</string>
+    <string name="video">本地视频</string>
+    <string name="audio">本地音乐</string>
+    <string name="net_video">网络视频</string>
+    <string name="person">个人信息</string>
+</resources>
