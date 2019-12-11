@@ -22,7 +22,7 @@ public abstract class BasePager {
 
     /**
      * 子类需要重写，用来创建View
-     * @return View
+     * @return
      */
     public abstract View initView();
 

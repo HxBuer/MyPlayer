@@ -65,7 +65,7 @@ public class MainActivity extends FragmentActivity {
         private  void setFragment() {
             FragmentManager fm = getSupportFragmentManager();       //得到fragmentManager
             FragmentTransaction ft = fm.beginTransaction();         //开启事务
-            //final  BasePager BasePager = getBasePager();
+
             Fragment fragment = new ReplaceFragment(getBasePager());
             ft.replace(R.id.fl_main , fragment);
             ft.commit();                                            //提交
