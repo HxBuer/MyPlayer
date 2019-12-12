@@ -1,5 +1,6 @@
 package com.example.myplayer.pager;
 
+import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.database.Cursor;
@@ -59,7 +60,7 @@ public class VideoPager extends BasePager {
         @Override
         public void handleMessage(@NonNull Message msg) {           //切换到主线程
             super.handleMessage(msg);
-            if (mediaItems != null && mediaItems.size() > 0) {       //有数据
+            if (msg.obj !=null && mediaItems != null && mediaItems.size() > 0) {       //有数据
                 tv_nomedia.setVisibility(View.GONE);
                 pb_loading.setVisibility(View.GONE);
                 //设置适配器
@@ -124,7 +125,6 @@ public class VideoPager extends BasePager {
             public void run() {
                 mediaItems = new ArrayList<>();        //容器
                 ContentResolver contentResolver = context.getContentResolver();
-                //申请权限
                 Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;              //外部存储
                 String[] objects = {
                         MediaStore.Video.Media.DISPLAY_NAME,    //视频名称
@@ -133,7 +133,8 @@ public class VideoPager extends BasePager {
                         MediaStore.Video.Media.DATA             //绝对路径
 
                 };
-                Cursor cursor = contentResolver.query(uri, objects, null, null, null);
+                //权限检查
+                    Cursor cursor = contentResolver.query(uri, objects, null, null, null);
                 if (null != cursor) {
                     while (cursor.moveToNext()) {
                         String name = cursor.getString(0);

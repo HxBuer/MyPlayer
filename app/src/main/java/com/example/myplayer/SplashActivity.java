@@ -13,7 +13,6 @@ public class SplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -21,6 +20,7 @@ public class SplashActivity extends Activity {
                 startMainActivity();
             }
         },2000);
+
     }
     private  boolean isStartMain = false;
     private  void  startMainActivity(){
@@ -32,6 +32,7 @@ public class SplashActivity extends Activity {
             finish();
         }
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
