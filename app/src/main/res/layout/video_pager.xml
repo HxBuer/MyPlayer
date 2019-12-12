@@ -10,17 +10,17 @@
     <TextView
         android:id="@+id/tv_nomedia"
         android:layout_centerInParent="true"
-        android:text="没有找到"
+        android:text="@string/notfound"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:textSize="20dp"/>
+        android:textSize="20sp"/>
 
     <ProgressBar
         android:id="@+id/pb_loading"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="正在加载···"/>
+        android:text="@string/loading"/>
 
 </RelativeLayout>

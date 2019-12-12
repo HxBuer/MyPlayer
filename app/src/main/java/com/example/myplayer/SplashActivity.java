@@ -9,6 +9,10 @@ import android.view.MotionEvent;
 public class SplashActivity extends Activity {
 
     private final Handler handler = new Handler();
+
+    public SplashActivity() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -16,4 +16,6 @@
     <string name="video_name">变形金刚</string>
     <string name="video_size">10M</string>
     <string name="video_duration">时长</string>
+    <string name="notfound">没有找到</string>
+    <string name="loading">正在加载···</string>
 </resources>

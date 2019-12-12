@@ -1,11 +1,10 @@
 package com.example.myplayer.pager;
 
-import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
@@ -13,14 +12,15 @@ import android.text.format.Formatter;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 
+import com.example.myplayer.MyVideoPlayer;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.domain.MediaItem;
@@ -67,24 +67,45 @@ public class VideoPager extends BasePager {
         TextView tv_video_size;
     }
 
-
+    /**
+     * TODO：返回每个视频的视图，点击视频播放
+     * @return view：根据有无视频返回对应的页面
+     */
     @Override
     public View initView() {
         View view = View.inflate(context, R.layout.video_pager, null);
         lv_video_pager = view.findViewById(R.id.lv_video_pager);
         tv_nomedia = view.findViewById(R.id.tv_nomedia);
         pb_loading = view.findViewById(R.id.pb_loading);
+        //点击播放
+        lv_video_pager.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MediaItem mediaItem = mediaItems.get(position);
+                //调用其他播放器
+//                Intent intent = new Intent();
+//                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+//                context.startActivity(intent);
+                //调用自己的播放器
+                Intent intent = new Intent(context, MyVideoPlayer.class);
+                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 
     @Override
     public void initData() {
         Log.i("video pager", "initData: 本地视频初始化···");
-        getData();                                           //不可以用主线程
+        getData();                                           //尽量不用主线程
     }
 
 
-
+    /**
+     * TODO：适配器
+     * return: 适配器
+     */
     class VideoPagerAdapter extends BaseAdapter {
 
         @Override
@@ -127,12 +148,12 @@ public class VideoPager extends BasePager {
 
 
     /**
-     * TODO:加载本地多媒体信息
+     * TODO:子线程加载本地视频信息
      */
     private void getData() {
         new Thread() {
             public void run() {
-                mediaItems = new ArrayList<>();        //容器
+                mediaItems = new ArrayList<>();                 //容器
                 ContentResolver contentResolver = context.getContentResolver();
                 Uri uri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;              //外部存储
                 String[] objects = new String[]{
@@ -155,7 +176,7 @@ public class VideoPager extends BasePager {
                     }
                     cursor.close();
                 }
-                handler.sendEmptyMessage(0);
+                handler.sendEmptyMessage(0);            //转到主线程
             }
         }.start();
     }
