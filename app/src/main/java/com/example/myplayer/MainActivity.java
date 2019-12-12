@@ -106,10 +106,13 @@ public class MainActivity extends FragmentActivity {
      * @param activity
      */
     private void getStoragePermission(Activity activity){
-        String requestPermission = "android.permission.READ_EXTERNAL_STORAGE";
-        int permission = ActivityCompat.checkSelfPermission(activity,requestPermission);
-        if (permission == PackageManager.PERMISSION_DENIED){
-            ActivityCompat.requestPermissions(activity,new String[]{requestPermission},1);
+        String[] requestPermission = new String[]{"android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.READ_EXTERNAL_STORAGE"};
+        int permission = ActivityCompat.checkSelfPermission(activity,STORAGE_SERVICE);
+        if (permission == PackageManager.PERMISSION_DENIED) {
+            ActivityCompat.requestPermissions(activity, requestPermission, 1);
+        }else{
+            startLoad();
         }
     }
 

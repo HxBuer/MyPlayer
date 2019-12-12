@@ -13,4 +13,7 @@
     <string name="net_video">网络视频</string>
     <string name="person">个人信息</string>
     <string name="search">网络搜索</string>
+    <string name="video_name">变形金刚</string>
+    <string name="video_size">10M</string>
+    <string name="video_duration">时长</string>
 </resources>
