@@ -32,7 +32,7 @@ public class MainActivity extends FragmentActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getStoragePermission(this);
+        getPermission(this);
     }
 
     private void startLoad(){
@@ -104,9 +104,10 @@ public class MainActivity extends FragmentActivity {
      * TODO:获取存储权限
      * @param activity
      */
-    private void getStoragePermission(Activity activity){
+    private void getPermission(Activity activity){
         String[] requestPermission = new String[]{"android.permission.READ_EXTERNAL_STORAGE",
-                "android.permission.READ_EXTERNAL_STORAGE"};
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.INTERNET"};
         int permission = ActivityCompat.checkSelfPermission(activity,STORAGE_SERVICE);
         if (permission == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(activity, requestPermission, 1);

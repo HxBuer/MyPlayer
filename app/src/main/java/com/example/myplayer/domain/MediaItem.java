@@ -9,9 +9,18 @@ public class MediaItem {
     private String name;            //视频名称
     private long duration;          //视频时长
     private long size;              //视频大小
-    private String data;            //视频日期
+    private String data;            //视频地址
+    private String coverImg;        //封面地址
+    private String videoTitle;      //视频标题
 
     public MediaItem() {
+    }
+
+    public MediaItem(String name, String data, String coverImg, String videoTitle) {
+        this.name = name;
+        this.data = data;
+        this.coverImg = coverImg;
+        this.videoTitle = videoTitle;
     }
 
     public MediaItem(String name, long duration, long size, String data) {
@@ -19,6 +28,22 @@ public class MediaItem {
         this.duration = duration;
         this.size = size;
         this.data = data;
+    }
+
+    public String getCoverImg() {
+        return coverImg;
+    }
+
+    public void setCoverImg(String coverImg) {
+        this.coverImg = coverImg;
+    }
+
+    public String getVideoTitle() {
+        return videoTitle;
+    }
+
+    public void setVideoTitle(String videoTitle) {
+        this.videoTitle = videoTitle;
     }
 
     public String getName() {
