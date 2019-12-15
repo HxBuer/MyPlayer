@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /><!-- 可选 -->
 
     <application
+        android:networkSecurityConfig="@xml/network_security_config"
         android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +18,7 @@
         android:theme="@style/AppTheme"
         android:fullBackupContent="@xml/backup_descriptor"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".SplashActivity">
+        <activity android:name=".activity.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,10 +28,11 @@
         <!--configChanges:orientation|screenSize:防止Activity重建
             screenOrientation:portrait:设置竖屏
             screenOrientation:landscape:设置横屏-->
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:screenOrientation="portrait"
             android:configChanges="orientation|screenSize"/>
-        <activity android:name=".MyVideoPlayer"/>
+        <activity android:name=".activity.MyVideoPlayer"/>
+        <activity android:name=".activity.AudioPlayer"/>
     </application>
 
 </manifest>

@@ -1,10 +1,12 @@
-package com.example.myplayer;
+package com.example.myplayer.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
+
+import com.example.myplayer.R;
 
 public class SplashActivity extends Activity {
 

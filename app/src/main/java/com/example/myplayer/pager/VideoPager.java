@@ -20,7 +20,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.myplayer.MyVideoPlayer;
+import com.example.myplayer.activity.MyVideoPlayer;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.domain.MediaItem;

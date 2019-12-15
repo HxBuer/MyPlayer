@@ -13,7 +13,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.myplayer.MyVideoPlayer;
+import com.example.myplayer.activity.MyVideoPlayer;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.domain.MediaItem;

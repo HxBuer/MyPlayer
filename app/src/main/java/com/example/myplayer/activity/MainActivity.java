@@ -1,4 +1,4 @@
-package com.example.myplayer;
+package com.example.myplayer.activity;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.RadioGroup;
 
+import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.pager.AudioPager;
 import com.example.myplayer.pager.NetVideoPager;

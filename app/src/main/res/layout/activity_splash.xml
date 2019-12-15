@@ -4,21 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashActivity"
+    tools:context=".activity.SplashActivity"
     tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/iv_splash_icon"
-        android:layout_width="206dp"
-        android:layout_height="228dp"
+        android:layout_width="172dp"
+        android:layout_height="187dp"
         android:src="@drawable/splash"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.393"
-        />
+        app:layout_constraintVertical_bias="0.435" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -29,7 +28,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/iv_splash_icon">
+        app:layout_constraintTop_toBottomOf="@+id/iv_splash_icon"
+        app:layout_constraintVertical_bias="0.0">
 
         <ProgressBar
             android:layout_width="wrap_content"

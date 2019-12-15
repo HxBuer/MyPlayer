@@ -1,4 +1,4 @@
-package com.example.myplayer;
+package com.example.myplayer.activity;
 
 import android.app.Activity;
 import android.media.MediaPlayer;
@@ -9,6 +9,8 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
+
+import com.example.myplayer.R;
 
 /**
  * author:张智富  Email:464930073@qq.com
