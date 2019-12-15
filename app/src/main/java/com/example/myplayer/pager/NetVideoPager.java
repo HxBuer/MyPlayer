@@ -1,15 +1,19 @@
 package com.example.myplayer.pager;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.myplayer.MyVideoPlayer;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.domain.MediaItem;
@@ -48,12 +52,23 @@ public class NetVideoPager extends BasePager {
         lv_video_pager = view.findViewById(R.id.lv_video_pager);
         tv_nomedia = view.findViewById(R.id.tv_nomedia);
         pb_loading = view.findViewById(R.id.pb_loading);
+        //点击播放
+        lv_video_pager.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MediaItem mediaItem = mediaItems.get(position);
+                Intent intent = new Intent(context, MyVideoPlayer.class);
+                intent.setData(mediaItem.getNetUri());
+                context.startActivity(intent);
+            }
+        });
         return view;
     }
 
     @Override
     public void initData() {
         Log.i("", "initData: 网络数据初始化···");
+        tv_nomedia.setVisibility(View.GONE);
         getDataFromNet();
     }
 
@@ -92,11 +107,10 @@ public class NetVideoPager extends BasePager {
      * @param json
      */
     private void processData(String json) {
+
         parseJson(json);
         pb_loading.setVisibility(View.GONE);
-        if(mediaItems != null && mediaItems.size() > 0){
-            tv_nomedia.setVisibility(View.GONE);
-        }else {
+        if(mediaItems == null){
             tv_nomedia.setVisibility(View.VISIBLE);
         }
         //设置适配器
@@ -167,7 +181,7 @@ public class NetVideoPager extends BasePager {
             for (int i = 0 ; i < jsonArray.length() ; i++){
                 JSONObject jsonObject = (JSONObject) jsonArray.get(i);
                 if (null != jsonObject){
-                    String url  = jsonObject.getString("url");
+                    Uri url  = Uri.parse(jsonObject.getString("url"));
                     String movieName = jsonObject.getString("movieName");
                     String coverImg = jsonObject.getString("coverImg");
                     String videoTitle = jsonObject.getString("videoTitle");

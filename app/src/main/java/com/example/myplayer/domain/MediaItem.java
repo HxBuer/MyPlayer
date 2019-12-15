@@ -1,5 +1,7 @@
 package com.example.myplayer.domain;
 
+import android.net.Uri;
+
 /**
  * author:张智富  Email:464930073@qq.com
  * date:2019/12/11
@@ -12,17 +14,19 @@ public class MediaItem {
     private String data;            //视频地址
     private String coverImg;        //封面地址
     private String videoTitle;      //视频标题
+    private Uri netUri;
 
     public MediaItem() {
     }
 
-    public MediaItem(String name, String data, String coverImg, String videoTitle) {
+    //网络视频构造器
+    public MediaItem(String name, Uri uri, String coverImg, String videoTitle) {
         this.name = name;
-        this.data = data;
+        this.netUri = uri;
         this.coverImg = coverImg;
         this.videoTitle = videoTitle;
     }
-
+    //本地视频构造器
     public MediaItem(String name, long duration, long size, String data) {
         this.name = name;
         this.duration = duration;
@@ -76,5 +80,13 @@ public class MediaItem {
 
     public void setData(String data) {
         this.data = data;
+    }
+
+    public Uri getNetUri() {
+        return netUri;
+    }
+
+    public void setNetUri(Uri netUri) {
+        this.netUri = netUri;
     }
 }
