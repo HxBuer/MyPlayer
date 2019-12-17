@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
+import com.example.myplayer.activity.AudioPlayer;
 import com.example.myplayer.activity.MyVideoPlayer;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
@@ -89,8 +90,8 @@ public class AudioPager extends BasePager {
 //                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
 //                context.startActivity(intent);
                 //调用自己的播放器
-                Intent intent = new Intent(context, MyVideoPlayer.class);
-                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
+                Intent intent = new Intent(context, AudioPlayer.class);
+                intent.setDataAndType(Uri.parse(mediaItem.getData()),"audio/*");
                 context.startActivity(intent);
             }
         });
