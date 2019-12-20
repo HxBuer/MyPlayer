@@ -1,6 +1,7 @@
 package com.example.myplayer.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 
 /**
@@ -11,6 +12,7 @@ import android.view.View;
  */
 public abstract class BasePager {
 
+    public boolean isLogin = false;
     protected Context context;         //上下文
     public View rootView;           //视图
     public boolean isInitData = false;      //表示是否初始化
@@ -25,7 +27,7 @@ public abstract class BasePager {
      * @return
      */
     public abstract View initView();
-
+    public abstract void initUserData(String json);
     public abstract void initData();
 }
 

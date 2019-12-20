@@ -66,6 +66,11 @@ public class NetVideoPager extends BasePager {
     }
 
     @Override
+    public void initUserData(String json) {
+
+    }
+
+    @Override
     public void initData() {
         Log.i("", "initData: 网络数据初始化···");
         tv_nomedia.setVisibility(View.GONE);
