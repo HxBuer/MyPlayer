@@ -6,11 +6,17 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.RadioGroup;
 
 import com.example.myplayer.R;
@@ -36,7 +42,39 @@ public class MainActivity extends FragmentActivity {
         getPermission(this);
     }
 
-    private void startLoad(){
+    /**
+     * TODO：由于MainActivity设置为singleTask,onRetart()无法更新Intent，需要重写此方法以更新Intent
+     *
+     * @param intent
+     */
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    /**
+     * TODO:LoginActivity结束时，更新用户界面信息
+     */
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.i("", "onRestart: MainActivity```````");
+        String user_data = null;
+        try {
+            user_data = this.getIntent().getExtras().getString("user_data");
+            Log.i("user_data:", user_data);
+            basePagers.get(3).initUserData(user_data);
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+
+    }
+
+    /**
+     * TODO：获取权限后加载Activity
+     */
+    private void startLoad() {
         RadioGroup rg_main = findViewById(R.id.rg_main);
         basePagers = new ArrayList<>();
         basePagers.add(new VideoPager(this));
@@ -51,13 +89,13 @@ public class MainActivity extends FragmentActivity {
 
 
     /**
-     * 按键监听
+     * TODO：按键监听
      */
-    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener{
+    class MyOnCheckedChangeListener implements RadioGroup.OnCheckedChangeListener {
 
         @Override
         public void onCheckedChanged(RadioGroup group, int checkedId) {
-            switch (checkedId){
+            switch (checkedId) {
                 default:
                     position = 0;
                     break;
@@ -75,23 +113,22 @@ public class MainActivity extends FragmentActivity {
             setFragment();
         }
 
-        private  void setFragment() {
+        private void setFragment() {
             FragmentManager fm = getSupportFragmentManager();       //得到fragmentManager
             FragmentTransaction ft = fm.beginTransaction();         //开启事务
-
-            Fragment fragment = new ReplaceFragment(getBasePager());//替换页面
-            ft.replace(R.id.fl_main , fragment);
+            Fragment fragment = new ReplaceFragment(getBasePager());
+            ft.replace(R.id.fl_main, fragment);                    //替换页面
             ft.commit();                                            //提交
         }
 
         /**
-         *  TODO:获取对应页面的资源
+         * TODO:获取对应页面的资源
+         *
          * @return 对应页面
          */
-
         private BasePager getBasePager() {
             BasePager basePager = basePagers.get(position);
-            if (!basePager.isInitData){
+            if (position != 3 && !basePager.isInitData) {             //用户界面留给LoginActivity更新
                 basePager.isInitData = true;
                 basePager.initData();
             }
@@ -100,19 +137,19 @@ public class MainActivity extends FragmentActivity {
     }
 
 
-
     /**
      * TODO:获取存储权限
+     *
      * @param activity
      */
-    private void getPermission(Activity activity){
+    private void getPermission(Activity activity) {
         String[] requestPermission = new String[]{"android.permission.READ_EXTERNAL_STORAGE",
                 "android.permission.WRITE_EXTERNAL_STORAGE",
                 "android.permission.INTERNET"};
-        int permission = ActivityCompat.checkSelfPermission(activity,STORAGE_SERVICE);
+        int permission = ActivityCompat.checkSelfPermission(activity, STORAGE_SERVICE);
         if (permission == PackageManager.PERMISSION_DENIED) {
             ActivityCompat.requestPermissions(activity, requestPermission, 1);
-        }else{
+        } else {
             startLoad();
         }
     }

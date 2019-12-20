@@ -99,6 +99,11 @@ public class AudioPager extends BasePager {
     }
 
     @Override
+    public void initUserData(String json) {
+
+    }
+
+    @Override
     public void initData() {
         Log.i("video pager", "initData: 本地音频初始化···");
         getData();                                           //尽量不用主线程
