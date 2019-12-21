@@ -92,12 +92,12 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                     URL url = new URL(com.example.myplayer.utils.URL.LOGIN_URL);            //设置URL
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();//打开连接
                     connection.setRequestMethod("POST");                                    //请求方式
-                    connection.setConnectTimeout(5000);
-                    connection.setReadTimeout(3000);
+                    connection.setConnectTimeout(5000);                                     //最大连接时长
+                    connection.setReadTimeout(3000);                                        //最大读数据时长
                     connection.connect();
                     OutputStream os = connection.getOutputStream();
                     String form = "user_name="+user_name+"&user_pwd="+user_pwd;
-                    os.write(form.getBytes(StandardCharsets.UTF_8));
+                    os.write(form.getBytes(StandardCharsets.UTF_8));                        //发送请求
 
                     int responseCode = connection.getResponseCode();
                     if (responseCode == 200){                                               //请求成功
@@ -142,6 +142,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
 
             }
         }).start();
-        }
+
+    }
 
 }
