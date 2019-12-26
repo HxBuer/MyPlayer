@@ -21,8 +21,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
-import com.example.myplayer.activity.AudioPlayer;
-import com.example.myplayer.activity.MyVideoPlayer;
+import com.example.myplayer.activity.MyAudioPlayerActivity;
 import com.example.myplayer.R;
 import com.example.myplayer.base.BasePager;
 import com.example.myplayer.domain.MediaItem;
@@ -90,8 +89,8 @@ public class AudioPager extends BasePager {
 //                intent.setDataAndType(Uri.parse(mediaItem.getData()),"video/*");
 //                context.startActivity(intent);
                 //调用自己的播放器
-                Intent intent = new Intent(context, AudioPlayer.class);
-                intent.setDataAndType(Uri.parse(mediaItem.getData()),"audio/*");
+                Intent intent = new Intent(context, MyAudioPlayerActivity.class);
+                intent.putExtra("position",position);
                 context.startActivity(intent);
             }
         });
@@ -180,10 +179,10 @@ public class AudioPager extends BasePager {
                         long duration = cursor.getLong(1);
                         long size = cursor.getLong(2);
                         String data = cursor.getString(3);
-                        Log.i("cursor ", "info: " + name+"\n"+duration+"\n"+size+"\n"+data+"\n");
                         MediaItem mediaItem = new MediaItem(name, duration, size, data);
                         mediaItems.add(mediaItem);           //添加到容器中
                     }
+                    Log.i("AudioPager ", "本地音频数据初始化完成！ " );
                     cursor.close();
                 }
                 handler.sendEmptyMessage(0);            //转到主线程

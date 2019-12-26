@@ -175,10 +175,10 @@ public class VideoPager extends BasePager {
                         long duration = cursor.getLong(1);
                         long size = cursor.getLong(2);
                         String data = cursor.getString(3);
-                        Log.i("cursor ", "info: " + name+"\n"+duration+"\n"+size+"\n"+data+"\n");
                         MediaItem mediaItem = new MediaItem(name, duration, size, data);
                         mediaItems.add(mediaItem);           //添加到容器中
                     }
+                    Log.i("VideoPager ", "本地视频数据初始化完成！ " );
                     cursor.close();
                 }
                 handler.sendEmptyMessage(0);            //转到主线程

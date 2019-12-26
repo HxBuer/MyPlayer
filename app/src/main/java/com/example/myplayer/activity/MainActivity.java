@@ -59,7 +59,7 @@ public class MainActivity extends FragmentActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.i("", "onRestart: MainActivity```````");
+        Log.i("", "onRestart: MainActivity");
         String user_data = null;
         try {
             user_data = this.getIntent().getExtras().getString("user_data");

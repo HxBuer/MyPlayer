@@ -4,56 +4,85 @@
     android:background="#1aaba8"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
-        android:gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="75dp">
+
+        <ImageView
+            android:id="@+id/iv_down"
+            android:src="@drawable/ic_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_audio_name"
+            android:gravity="center"
+            android:layout_width="250dp"
+            android:paddingTop="10dp"
             android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:lines="2"
             android:text="音乐名称"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
+            android:textSize="18sp" />
 
         <TextView
-
+            android:id="@+id/tv_artist_name"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="歌手名"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
+            android:textSize="15sp" />
+        <ImageView
+            android:id="@+id/iv_check_more"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_check_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:paddingBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="66dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tv_time"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_current_time"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="00:00/03:00"
+            android:text="03:00"
             android:textColor="#ffffff"
             android:textSize="15sp" />
 
         <SeekBar
             android:id="@+id/seekbar_audio"
-            android:layout_width="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:maxHeight="6dp"
             android:minHeight="6dp"
-            android:progress="20" />
-    </LinearLayout>
+            android:progress="1" />
+        <TextView
+            android:id="@+id/tv_audio_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+    </RelativeLayout>
 
     <LinearLayout
         android:gravity="center"

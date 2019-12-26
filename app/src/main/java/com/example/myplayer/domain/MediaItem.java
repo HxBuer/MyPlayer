@@ -14,6 +14,7 @@ public class MediaItem {
     private String data;            //视频地址
     private String coverImg;        //封面地址
     private String videoTitle;      //视频标题
+    private String artistName;      //演唱者
     private Uri netUri;
 
     public MediaItem() {
@@ -32,6 +33,22 @@ public class MediaItem {
         this.duration = duration;
         this.size = size;
         this.data = data;
+    }
+    //本地音乐构造器
+    public MediaItem(String name, long duration, long size, String data,String artistName) {
+        this.name = name;
+        this.duration = duration;
+        this.size = size;
+        this.data = data;
+        this.artistName = artistName;
+    }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public void setArtistName(String artistName) {
+        this.artistName = artistName;
     }
 
     public String getCoverImg() {

@@ -21,4 +21,18 @@ public class TimeUtils {
         HMStime = hour + ":" + mint + ":" + sec;
         return HMStime;
     }
+    /**
+     * TODO:毫秒转M:S
+     * @param ms
+     * @return M:S
+     */
+    public String msToMS(long ms){
+        String MStime;
+        ms /= 1000;
+        long mint = ms/60;
+        long sec = ms%60;
+        MStime = mint + ":" + sec;
+        return MStime;
+    }
+
 }

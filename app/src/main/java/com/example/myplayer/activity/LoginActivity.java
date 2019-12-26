@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -89,6 +90,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
             @Override
             public void run() {
                 try {
+                    SystemClock.sleep(1500);
                     URL url = new URL(com.example.myplayer.utils.URL.LOGIN_URL);            //设置URL
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();//打开连接
                     connection.setRequestMethod("POST");                                    //请求方式
@@ -116,7 +118,7 @@ public class LoginActivity extends Activity implements View.OnClickListener {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(LoginActivity.this,result,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(LoginActivity.this,"登录成功",Toast.LENGTH_SHORT).show();
                                 dialog.dismiss();
                                 Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                                 intent.putExtra("user_data",result);
