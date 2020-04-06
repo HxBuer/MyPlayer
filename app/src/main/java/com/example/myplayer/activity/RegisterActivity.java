@@ -120,7 +120,15 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         }else return userEmail.equals("");
     }
 
-
+    /**
+     * TODO:1.传入用户输入参数封装在HTTP请求体中
+     *      2.异步网络请求
+     *      3.根据响应的状态码作出对应的处理
+     * @param user_name 用户名
+     * @param user_pwd  用户密码
+     * @param user_email  用户Email
+     * @param user_phone   phone
+     */
     private void registerRequest(String user_name ,String user_pwd,String user_email,String user_phone) {
 
         final String form = "user_name="+user_name+"&user_pwd="+user_pwd+"&user_Email="+user_email+"&user_phone="+user_phone; //请求体

@@ -85,7 +85,7 @@ public class NetVideoPager extends BasePager {
         x.http().get(params, new Callback.CommonCallback<String>() {
             @Override
             public void onSuccess(String result) {
-                Log.i("联网请求", "onSuccess: OK！" + result);
+                Log.i("联网请求", "onSuccess: OK！");
                 processData(result);
             }
 
@@ -157,7 +157,6 @@ public class NetVideoPager extends BasePager {
             MediaItem mediaItem = mediaItems.get(position);
             viewHolder.tv_video_title.setText(mediaItem.getVideoTitle());
             viewHolder.tv_movie_name.setText(mediaItem.getName());
-
             //请求图片：XUtils3或者Glide
             x.image().bind(viewHolder.iv_movie_icon , mediaItem.getCoverImg());
             return convertView;

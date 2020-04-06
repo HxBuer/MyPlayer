@@ -118,6 +118,9 @@ public class MyAudioPlayerActivity extends Activity implements View.OnClickListe
         bindStartService();         //绑定并启动服务
     }
 
+    /**
+     * TODO：注册广播接收器
+     */
     private void initReceiver() {
         utils = new TimeUtils();
         receiver = new MyReceiver();
@@ -167,7 +170,6 @@ public class MyAudioPlayerActivity extends Activity implements View.OnClickListe
         intent.setAction("com.example.myplayer.AUDIOSERVICE");
         bindService(intent,serviceConnection, Context.BIND_AUTO_CREATE);    //（绑定）与服务建立连接，回调
         startService(intent);                                               //避免Service被重新创建
-
     }
 
     @Override
@@ -184,6 +186,9 @@ public class MyAudioPlayerActivity extends Activity implements View.OnClickListe
         }
     }
 
+    /**
+     * TODO：关联xml，绑定控件ID，设置监听
+     */
     private void findViews() {
         setContentView(R.layout.activity_audioplayer);
         tvAudioName = findViewById( R.id.tv_audio_name );

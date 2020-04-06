@@ -26,6 +26,8 @@ import com.example.myplayer.pager.NetVideoPager;
 import com.example.myplayer.pager.PersonPager;
 import com.example.myplayer.pager.ReplaceFragment;
 import com.example.myplayer.pager.VideoPager;
+import com.example.myplayer.utils.HotFixTest;
+import com.example.myplayer.utils.Hotfix;
 
 import java.util.ArrayList;
 
@@ -40,6 +42,11 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getPermission(this);
+
+        /*
+        hotFix测试
+         */
+        HotFixTest.test();
     }
 
     /**
